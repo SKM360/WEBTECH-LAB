@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Names</title>
+    <style>
+        fieldset {
+            width:200px;
+        }
+    </style>
+</head>
+<body>
+        <fieldset>
+    <h1>Search Names</h1>
+    <input type="text" id="searchInput" class="search-box" oninput="filterNames()" placeholder="Search for names...">
+    <ul type="circle:black" id="nameList" class="name-list" >
+        <li>John Doe</li>
+        <li>Jane Smith</li>
+        <li>David Wilson</li>
+        <li>Linda Brown</li>
+        <li>James Johnson</li>
+        <li>Emily Garcia</li>
+        <li>Michael Martinez</li>
+        <li>Emma Hernandez</li>
+        <li>William Jones</li>
+        <li>Olivia Lee</li>
+    </ul>
+</fieldset>
+    <script>
+        const nameList = document.getElementById('nameList');
+        const names = Array.from(nameList.children);
+
+        function filterNames() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toUpperCase();
+            const filteredNames = names.filter(name => name.textContent.toUpperCase().includes(filter));
+            nameList.innerHTML = '';
+            filteredNames.forEach(name => nameList.appendChild(name));
+        }
+    </script>
+</body>
+</html>

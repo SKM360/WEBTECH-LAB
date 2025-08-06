@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Read More/Less Toggle</title>
+<style>
+    body {
+        font-family: Arial;
+        text-align: center;
+    }
+    .more-content {
+        display: none; /* Initially hidden */
+    }
+   
+</style>
+</head>
+<body>
+<div class="content">
+    <p>My self sk musaroof hossain. </p>
+    <p class="more-content">
+        I am from Mayurbhanj . I am 21yr old .
+    </p>
+    <p><span id="toggle-link" class="read-more" onclick="toggleReadMore()" style="color: blue; cursor: pointer;">Read More</span></p>
+</div>
+
+<script>
+    function toggleReadMore() {
+        var moreText = document.querySelector('.more-content');
+        var linkText = document.getElementById('toggle-link');
+
+        if (moreText.style.display === 'none') {
+            moreText.style.display = 'block';
+            linkText.textContent = 'Read Less';
+        } else {
+            moreText.style.display = 'none';
+            linkText.textContent = 'Read More';
+        }
+    }
+</script>
+
+</body>
+</html>

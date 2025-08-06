@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interest Calculators</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .calculator {
+            margin-bottom: 20px;
+        }
+        input[type="number"] {
+            width: 200px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interest Calculators</h1>
+
+    <!-- Simple Interest Calculator -->
+    <div class="calculator">
+        <h2>Simple Interest Calculator</h2>
+        <input type="number" id="principalSI" placeholder="Principal Amount" />
+        <input type="number" id="rateSI" placeholder="Annual Interest Rate (%)" />
+        <input type="number" id="timeSI" placeholder="Time (Years)" />
+        <button onclick="calculateSimpleInterest()">Calculate Simple Interest</button>
+        <div id="resultSI" class="result"></div>
+    </div>
+
+    <!-- Compound Interest Calculator -->
+    <div class="calculator">
+        <h2>Compound Interest Calculator</h2>
+        <input type="number" id="principalCI" placeholder="Principal Amount" />
+        <input type="number" id="rateCI" placeholder="Annual Interest Rate (%)" />
+        <input type="number" id="timeCI" placeholder="Time (Years)" />
+        <input type="number" id="timesCompounded" placeholder="Times Compounded Per Year" />
+        <button onclick="calculateCompoundInterest()">Calculate Compound Interest</button>
+        <div id="resultCI" class="result"></div>
+    </div>
+
+    <!-- SIP Maturity Amount Calculator -->
+    <div class="calculator">
+        <h2>SIP Maturity Amount Calculator</h2>
+        <input type="number" id="monthlyInvestment" placeholder="Monthly Investment" />
+        <input type="number" id="annualReturn" placeholder="Expected Annual Return (%)" />
+        <input type="number" id="investmentYears" placeholder="Investment Period (Years)" />
+        <button onclick="calculateSIP()">Calculate SIP Maturity Amount</button>
+        <div id="resultSIP" class="result"></div>
+    </div>
+
+    <script>
+        function calculateSimpleInterest() {
+            const principal = parseFloat(document.getElementById('principalSI').value);
+            const rate = parseFloat(document.getElementById('rateSI').value) / 100;
+            const time = parseFloat(document.getElementById('timeSI').value);
+
+            if (isNaN(principal) || isNaN(rate) || isNaN(time)) {
+                document.getElementById('resultSI').innerText = 'Please enter valid values.';
+                return;
+            }
+
+            const interest = principal * rate * time;
+            document.getElementById('resultSI').innerText = `Simple Interest: $${interest.toFixed(2)}`;
+        }
+
+        function calculateCompoundInterest() {
+            const principal = parseFloat(document.getElementById('principalCI').value);
+            const rate = parseFloat(document.getElementById('rateCI').value) / 100;
+            const time = parseFloat(document.getElementById('timeCI').value);
+            const n = parseFloat(document.getElementById('timesCompounded').value);
+
+            if (isNaN(principal) || isNaN(rate) || isNaN(time) || isNaN(n)) {
+                document.getElementById('resultCI').innerText = 'Please enter valid values.';
+                return;
+            }
+
+            const amount = principal * Math.pow(1 + rate / n, n * time);
+            const interest = amount - principal;
+            document.getElementById('resultCI').innerText = `Compound Interest: $${interest.toFixed(2)}`;
+        }
+
+        function calculateSIP() {
+            const monthlyInvestment = parseFloat(document.getElementById('monthlyInvestment').value);
+            const annualReturn = parseFloat(document.getElementById('annualReturn').value) / 100;
+            const years = parseFloat(document.getElementById('investmentYears').value);
+
+            if (isNaN(monthlyInvestment) || isNaN(annualReturn) || isNaN(years)) {
+                document.getElementById('resultSIP').innerText = 'Please enter valid values.';
+                return;
+            }
+
+            const monthlyReturn = annualReturn / 12;
+            const totalMonths = years * 12;
+            let maturityAmount = 0;
+
+            for (let i = 0; i < totalMonths; i++) {
+                maturityAmount = (maturityAmount + monthlyInvestment) * (1 + monthlyReturn);
+            }
+
+            document.getElementById('resultSIP').innerText = `SIP Maturity Amount: $${maturityAmount.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

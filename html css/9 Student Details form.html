@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Form</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 6px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h3>Student Details Form</h3>
+    <form id="form">
+      Full Name: <input id="name" required/><br /><br />
+      Email: <input id="email" /><br /><br />
+      Phone: <input id="phone" /><br /><br />
+      Address:<textarea id="address"></textarea><br /><br />
+      DOB: <input type="date" id="dob" /><br /><br />
+      Gender:
+      <select id="gender">
+        <option value="">Select</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option></select
+      ><br /><br />
+      Course: <input id="course" /><br /><br />
+      Year:
+      <select id="year">
+        <option value="">Select</option>
+        <option>1st</option>
+        <option>2nd</option>
+        <option>3rd</option>
+        <option>4th</option></select
+      ><br /><br />
+      <button type="submit">Submit</button>
+    </form>
+
+    <!--
+  
+     <table>
+          <tr><th>Name</th><td>${v('name')}</td></tr>
+          <tr><th>Email</th><td>${v('email')}</td></tr>
+          <tr><th>Phone</th><td>${v('phone')}</td></tr>
+          <tr><th>Address</th><td>${v('address')}</td></tr>
+
+          <tr><th>DOB</th><td>${v('dob')}</td></tr>
+          <tr><th>Gender</th><td>${v('gender')}</td></tr>
+          <tr><th>Course</th><td>${v('course')}</td></tr>
+          <tr><th>Year</th><td>${v('year')}</td></tr>
+        </table>`;
+
+  
+  -->
+
+    <div id="result"></div>
+
+    <script>
+      form.onsubmit = (e) => {
+        e.preventDefault();
+        const v = (id) => document.getElementById(id).value;
+        document.getElementById("result").innerHTML = `
+       <table>
+       
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>address</th>
+            <th>DOB</th>
+            <th>Gender</th>
+            <th>Course</th>
+            <th>year</th>
+        </tr>
+        <tr>
+            <td>${v('name')}</td>
+            <td>${v('email')}</td>
+            <td>${v('phone')}</td>
+            <td>${v('address')}</td>
+            <td>${v('dob')}</td>
+            <td>${v('gender')}</td>
+            <td>${v('course')}</td>
+            <td>${v('year')}</td>
+    </table>`;
+      };
+    </script>
+  </body>
+</html>

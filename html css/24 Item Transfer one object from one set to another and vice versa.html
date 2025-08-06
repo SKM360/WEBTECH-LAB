@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Transfer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .set {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 30%;
+            box-sizing: border-box;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+        }
+        .selected {
+            background-color: #d0e0ff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Set Transfer</h1>
+    <div class="container">
+        <div class="set" id="set1">
+            <h2>Set 1</h2>
+            <ul id="list1">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>
+        </div>
+
+        <div class="button-container">
+            <button onclick="moveItem('list1', 'list2')">Move Right »</button>
+            <button onclick="moveItem('list2', 'list1')">« Move Left</button>
+        </div>
+
+        <div class="set" id="set2">
+            <h2>Set 2</h2>
+            <ul id="list2">
+                <li>Item 4</li>
+                <li>Item 5</li>
+                <li>Item 6</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function moveItem(sourceId, targetId) {
+            const sourceList = document.getElementById(sourceId);
+            const targetList = document.getElementById(targetId);
+            const selectedItems = sourceList.querySelectorAll('li.selected');
+
+            selectedItems.forEach(item => {
+                targetList.appendChild(item);
+                item.classList.remove('selected');
+            });
+        }
+
+        document.addEventListener('click', (event) => {
+            if (event.target.tagName === 'LI') {
+                event.target.classList.toggle('selected');
+            }
+        });
+    </script>
+</body>
+</html>

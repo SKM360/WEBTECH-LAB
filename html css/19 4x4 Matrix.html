@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  #tab{
+    display:none;
+  }
+  </style>
+  <title>Add Matrix</title>
+  <script>
+    
+function addMatrix(){
+    tab.style.display="inline-table";
+    const A=[];
+    const B=[];
+    const n=[];
+    var i;
+   for(i=1;i<=16;i++){
+      A[i]=parseInt(document.getElementById(i).value);
+      }
+    
+   for(i=17;i<=33;i++){
+      B[i]=parseInt(document.getElementById(i).value);
+      }
+     
+    
+    for(i=1;i<=16;i++){
+      n[i]=A[i]+B[i+16];
+    }
+      document.getElementById("output").innerHTML="<h2>Addition:-</h2>";
+      for(i=33;i<=48;i++){
+        document.getElementById(i).innerHTML=n[i-32];
+      }
+    
+  }
+
+function multMatrix(){    
+  tab.style.display="inline-table";
+    const A=[];
+    const B=[];
+    const m=[];
+   for(i=1;i<=16;i++){
+      A[i]=parseInt(document.getElementById(i).value);
+      }
+    
+   for(i=17;i<=33;i++){
+      B[i]=parseInt(document.getElementById(i).value);
+      }
+    document.getElementById("output").innerHTML="<h2>Multiplication:-</h2>";
+       
+    for(j=1;j<=13;j+=4){
+    for(k=0;k<=3;k++){
+      m[j+k]=(A[j]*B[k+17])+(A[j+1]*B[k+21])+(A[j+2]*B[k+25])+(A[j+3]*B[k+29]);
+    }
+   }   
+      
+      for(i=33;i<=48;i++){
+        document.getElementById(i).innerHTML=m[i-32];
+      }
+}
+     
+  </script>
+</head>
+<body>
+  <fieldset style="width:300px;">
+  <h1>
+    4x4 Matrix Addition<br>
+  </h1>
+    <h2>Matrix A</h2>
+    <input type="text" id="1"size="1">
+    <input type="text" id="2"size="1">
+    <input type="text" id="3"size="1">
+    <input type="text" id="4"size="1"><br>
+    <input type="text" id="5"size="1">
+    <input type="text" id="6"size="1">
+    <input type="text" id="7"size="1">
+    <input type="text" id="8"size="1"><br>
+    <input type="text" id="9"size="1">
+    <input type="text" id="10"size="1">
+    <input type="text" id="11"size="1">
+    <input type="text" id="12"size="1"><br>
+    <input type="text" id="13"size="1">
+    <input type="text" id="14"size="1">
+    <input type="text" id="15"size="1">
+    <input type="text" id="16"size="1">
+    <h2>Matrix B</h2>
+    <input type="text" id="17"size="1">
+    <input type="text" id="18"size="1">
+    <input type="text" id="19"size="1">
+    <input type="text" id="20"size="1"><br>
+    <input type="text" id="21"size="1">
+    <input type="text" id="22"size="1">
+    <input type="text" id="23"size="1">
+    <input type="text" id="24"size="1"><br>
+    <input type="text" id="25"size="1">
+    <input type="text" id="26"size="1">
+    <input type="text" id="27"size="1">
+    <input type="text" id="28"size="1"><br>
+    <input type="text" id="29"size="1">
+    <input type="text" id="30"size="1">
+    <input type="text" id="31"size="1">
+    <input type="text" id="32"size="1"><br><br>
+    <input type="button" onclick="addMatrix()" value="Add Matrices">
+    <input type="button" onclick="multMatrix()" value="multiply Matrices"><br>
+    <center><h1><u>Result</u></h1></center>
+    <p id="output"></p>
+    <table border="4" id="tab">
+      <tr>
+        <td id="33"></td>
+        <td id="34"></td>
+        <td id="35"></td>
+        <td id="36"></td>
+      </tr>
+      <tr>
+        <td id="37"></td>
+        <td id="38"></td>
+        <td id="39"></td>
+        <td id="40"></td>
+      </tr>
+      <tr>
+        <td id="41"></td>
+        <td id="42"></td>
+        <td id="43"></td>
+        <td id="44"></td>
+      </tr>
+      <tr>
+        <td id="45"></td>
+        <td id="46"></td>
+        <td id="47"></td>
+        <td id="48"></td>
+      </tr>
+     
+    </table>
+    
+    
+  </fieldset> 
+</body>
+</html>

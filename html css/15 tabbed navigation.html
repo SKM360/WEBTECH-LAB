@@ -1,0 +1,48 @@
+<!DOC TYPE html>
+<html>
+    <head>
+        <title>tabbed navigation</title>
+        <style>
+            fieldset {
+                width:250px;
+                background-color:grey;
+            }
+        </style>
+        <script>
+                function home(){
+                    document.getElementById("out1").innerHTML="HOME";
+                    document.getElementById("out2").innerHTML="Welcome to the Homepage.";
+                }
+                function news(){
+                    document.getElementById("out1").innerHTML="NEWS";
+                    document.getElementById("out2").innerHTML="Welcome to the Newspage.";
+                }
+                function contact(){
+                    document.getElementById("out1").innerHTML="CONTACT";
+                    document.getElementById("out2").innerHTML="Welcome to the Contactpage.";
+                }
+                function about(){
+                    document.getElementById("out1").innerHTML="ABOUT";
+                    document.getElementById("out2").innerHTML="Welcome to the Aboutpage.";
+                }
+        </script>
+    </head>
+    <body>
+      <center>
+          <fieldset>
+            <table>
+               <tr>
+                 <td>
+                    <input type="button" onclick="home()" value="Home">
+                    <input type="button" onclick="news()" value="News">
+                    <input type="button" onclick="contact()" value="Contact">
+                    <input type="button" onclick="about()" value="About">
+                    <p id="out1">HOME</p>
+                    <p id="out2">Welcome to the Homepage</p>
+                </td>
+              </tr>
+            </table>
+          </fieldset>
+        </center>
+      </body>
+</html>

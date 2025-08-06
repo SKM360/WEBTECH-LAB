@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Personal/contact/Educational information</title>
+
+     <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 6px;
+        margin-top: 20px;
+      }
+    </style>
+  <script>
+    function get() {
+      var i, gender;
+      var f = document.getElementById("fname").value;
+      var l = document.getElementById("lname").value;
+      var d = document.getElementById("dob").value;
+      var g = document.getElementsByName("Gender");
+      for (i = 0; i < g.length; i++) {
+        if (g[i].checked) {
+          gender = g[i].value;
+        }
+      }
+      var e = document.getElementById("email").value;
+      var p = document.getElementById("phone").value;
+      var a = document.getElementById("address").value;
+      var s = document.getElementById("s/c").value;
+      var m = document.getElementById("m/f").value;
+      var ex = document.getElementById("egy").value;
+      document.getElementById("output").innerHTML = 
+      "<h5>Personal Information</h5><table border=2><tr><th>F.Name</th><th>L.Name</th><th>D.O.B</th><th>Gender</th></tr><tr><td>" + f + "</td><td>" + l + "</td><td>" + d + "</td><td>" + gender + "</td></tr></table><h5>Contact Information</h5><table border=2><tr><th>Email</th><th>Phone No.</th><th>Address</th></tr><tr><td>" + e + "</td><td>" + p + "</td><td>" + a + "</td></tr></table><h5>Educational Information</h5><table border=2><tr><th>School/College Name</th><th>Major/Field of study</th><th>Expected Graduation Year</th></tr><tr><td>" + s + "</td><td>" + m + "</td><td>" + ex + "</td></tr></table>";
+    }
+  </script>
+</head>
+
+<body>
+  <fieldset>
+    <legend>
+      <h4>Personal Information</h4>
+    </legend>
+    First Name: <input type="text" id="fname" required><br>
+    Last Name: <input type="text" id="lname" required><br>
+    Date Of Birth: <input type="date" id="dob" placeholder="dd/mm/yyyy"><br>
+    Gender:<input type="radio" name="Gender" value="MALE">Male
+    <input type="radio" name="Gender" value="FEMALE">Female
+  </fieldset>
+  <fieldset>
+    <legend>
+      <h4>Contact Information</h4>
+    </legend>
+    Email: <input type="text" id="email"><br>
+    Phone No: <input type="number" id="phone"><br>
+    Address: <textarea id="address" rows="4"></textarea>
+  </fieldset>
+  <fieldset>
+    <legend>
+      <h4>Educational Background</h4>
+    </legend>
+    School/College Name: <input type="text" id="s/c"><br>
+    Major/Field Of Study: <input type="text" id="m/f"><br>
+    Expected Graduation Year: <input type="text" id="egy">
+  </fieldset>
+  <input type="button" onclick="get()" value="SUBMIT">
+  <p id="output"></p>
+</body>
+
+</html>

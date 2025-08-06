@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Open a Bank Account</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    form {
+      border: 1px solid #ccc;
+      padding: 20px;
+      max-width: 400px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select {
+      width: 100%;
+      padding: 5px;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px;
+    }
+    #output {
+      margin-top: 20px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Open a Bank Account</h2>
+
+<form id="accountForm">
+  <label>Full Name: <input type="text" name="fullname" required></label>
+  <label>Date of Birth: <input type="date" name="dob" required></label>
+  <label>Email: <input type="email" name="email" required></label>
+  <label>Phone: <input type="tel" name="phone" required></label>
+  
+  <label>Highest Qualification: <input type="text" name="qualification"></label>
+  <label>Occupation: <input type="text" name="occupation"></label>
+  <label>Nominee Name: <input type="text" name="nominee"></label>
+  
+  <label>Identity Proof Type: 
+    <select name="idtype">
+      <option>Passport</option>
+      <option>Aadhar</option>
+      <option>Driving License</option>
+    </select>
+  </label>
+  
+  <label>Identity Proof Number: <input type="text" name="idnumber"></label>
+  <label>Upload Photo: <input type="file" name="photo"></label>
+  
+  <label>Account Type:
+    <select name="accounttype">
+      <option>Saving</option>
+      <option>Current</option>
+    </select>
+  </label>
+  
+  <button type="submit">Submit Application</button>
+</form>
+
+<div id="output"></div>
+
+<script>
+  document.getElementById("accountForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const data = new FormData(form);
+
+    const accountNumber = "AC" + Math.floor(100000000 + Math.random() * 900000000);
+
+    const result = `
+Account successfully created!
+Account Number: ${accountNumber}
+Full Name: ${data.get("fullname")}
+DOB: ${data.get("dob")}
+Email: ${data.get("email")}
+Phone: ${data.get("phone")}
+Qualification: ${data.get("qualification")}
+Occupation: ${data.get("occupation")}
+Nominee: ${data.get("nominee")}
+ID Type: ${data.get("idtype")}
+ID Number: ${data.get("idnumber")}
+Account Type: ${data.get("accounttype")}
+`;
+
+    document.getElementById("output").innerText = result;
+    form.reset();
+  });
+</script>
+
+</body>
+</html>

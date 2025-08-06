@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Information</title>
+</head>
+<body>
+    <h1>Enter Car Information</h1>
+
+    Make:<input type="text" id="make" >
+    <br>
+
+    Model:<input type="text" id="model" >
+    <br>
+
+    Year:<input type="number" id="year">
+    <br>
+
+    Door:<input type="number" id="doors" >
+    <br>
+
+    <button onclick="displayCarInfo()">Display Car Info</button>
+    <p id="carInfo"></p>
+
+    <script>
+        class Vehicle {
+            constructor(make, model, year) {
+                this.make = make;
+                this.model = model;
+                this.year = year;
+            }
+
+            getInfo() {
+                return `Make: ${this.make}, Model: ${this.model}, Year: ${this.year}`;
+            }
+        }
+
+        class Car extends Vehicle {
+            constructor(make, model, year, doors) {
+                super(make, model, year);
+                this.doors = doors;
+            }
+
+            getCarInfo() {
+                return `${this.getInfo()}, Doors: ${this.doors}`;
+            }
+        }
+
+        function displayCarInfo() {
+            const make = document.getElementById('make').value;
+            const model = document.getElementById('model').value;
+            const year = document.getElementById('year').value;
+            const doors = parseInt(document.getElementById('doors').value);
+
+            const car = new Car(make, model, year, doors);
+            document.getElementById('carInfo').textContent = car.getCarInfo();
+        }
+    </script>
+</body>
+</html>

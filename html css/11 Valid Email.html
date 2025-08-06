@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function validateEmail() {
+            var email = document.getElementById("email").value;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (email === "") {
+                alert("Email address is required");
+                return false;
+            } else if (!emailRegex.test(email)) {
+                alert("Invalid email format");
+                return false;
+            } else if (email.includes(" ")) {
+                alert("Email address should not contain spaces");
+                return false;
+            } else if (/^[0-9]/.test(email)) {
+                alert("Email address cannot start with a number");
+                return false;
+            } else if (/[A-Z]/.test(email)) {
+                alert("Email address cannot contain uppercase letters");
+                return false;
+            }
+            else{
+            alert("Valid email address!");
+            document.form1.text1.focus();
+            return true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="form1">
+        Email<input type="text" name="text1" id="email"><br>
+        <input type="submit" name="validate" value="Validate" onclick="return validateEmail()">
+    </form>
+</body>
+</html>
